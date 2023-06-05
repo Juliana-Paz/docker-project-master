@@ -1,0 +1,33 @@
+version: "3"
+services:
+  php:
+    build: './php/'
+    volumes:
+      - ./public:/var/www/html/
+  apache:
+    build: './apache/'
+    depends_on:
+      - php
+      - mysql
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/var/www/html/
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3309:3309"
+    volumes:
+      - db_data:/var/lib/mysql
+      # Initially creates produto table
+      - ./public/dump:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: "123"
+      MYSQL_DATABASE: "redes1"
+      MYSQL_USER: "juliana"
+      MYSQL_PASSWORD: "123"
+volumes:
+    db_data:
+
+
