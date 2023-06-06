@@ -1,14 +1,10 @@
 <?php
-// Including config file
 require_once "config.php";
  
-// Defining and initializing variables
 $nome = $descricao = $preco = "";
 $nome_err = $descricao_err = $preco_err = "";
  
-// Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Validate nome
     $input_nome = trim($_POST["nome"]);
     if(empty($input_nome)){
         $nome_err = "Por favor, insira o nome.";
@@ -18,15 +14,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nome = $input_nome;
     }
     
-    // Validate descricao
     $input_descricao = trim($_POST["descricao"]);
     if(empty($input_descricao)){
         $descricao_err = "Por favor, insira uma descrição.";     
     } else{
         $descricao = $input_descricao;
     }
-    
-    // Validate preco
+
     $input_preco = trim($_POST["preco"]);
     if(empty($input_preco)){
         $preco_err = "Por favor, insira o preço.";     
@@ -36,23 +30,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $preco = $input_preco;
     }
     
-    // Check input errors before inserting in database
     if(empty($nome_err) && empty($descricao_err) && empty($preco_err)){
-        // Prepare an insert statement
         $sql = "INSERT INTO produto (nome, descricao, preco) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "sss", $param_nome, $param_descricao, $param_preco);
             
-            // Set parameters
             $param_nome = $nome;
             $param_descricao = $descricao;
             $param_preco = $preco;
             
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                // Records created successfully. Redirect to landing page
                 header("location: index.php");
                 exit();
             } else{
@@ -60,11 +48,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
          
-        // Close statement
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
     mysqli_close($link);
 }
 ?>
@@ -82,18 +68,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         .page-header h2{
             margin-top: 0;
-            color: #5034C4; /* Cor base */
+            color: #5034C4;
         }
         .btn-primary {
-            background-color: #5034C4; /* Cor base */
-            border-color: #5034C4; /* Cor base */
+            background-color: #5034C4;
+            border-color: #5034C4;
         }
         .btn-primary:hover,
         .btn-primary:focus,
         .btn-primary:active,
         .btn-primary:active:hover {
-            background-color: #2C1D72; /* Cor mais escura */
-            border-color: #2C1D72; /* Cor mais escura */
+            background-color: #2C1D72;
+            border-color: #2C1D72;
         }
     </style>
 </head>

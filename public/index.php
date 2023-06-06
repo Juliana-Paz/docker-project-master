@@ -13,15 +13,15 @@
         }
         .page-header h2{
             margin-top: 0;
-            color: #5034C4; /* Cor do título */
+            color: #5034C4; 
         }
         .btn-success {
-            background-color: #5034C4; /* Cor do botão */
-            border-color: #5034C4; /* Cor do botão */
+            background-color: #5034C4; 
+            border-color: #5034C4; 
         }
         .btn-success:hover {
-            background-color: #2C1D72; /* Cor do botão em hover */
-            border-color: #2C1D72; /* Cor do botão em hover */
+            background-color: #2C1D72; 
+            border-color: #2C1D72; 
         }
         table tr td:last-child a{
             margin-right: 15px;
@@ -43,10 +43,8 @@
                         <a href="create.php" class="btn btn-success pull-right">Add New Employee</a>
                     </div>
                     <?php
-                    // Including the config file
                     require_once "config.php";
                     
-                    // Attempt select query execution
                     $sql = "SELECT * FROM produto";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
@@ -76,7 +74,6 @@
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
-                            // Free result set
                             mysqli_free_result($result);
                         } else{
                             echo "<p class='lead'><em>No records were found.</em></p>";
@@ -85,7 +82,6 @@
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
  
-                    // Close connection
                     mysqli_close($link);
                     ?>
                 </div>

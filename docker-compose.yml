@@ -20,7 +20,6 @@ services:
       - "3309:3309"
     volumes:
       - db_data:/var/lib/mysql
-      # Initially creates produto table
       - ./public/dump:/docker-entrypoint-initdb.d/
     environment:
       MYSQL_ROOT_PASSWORD: "123"

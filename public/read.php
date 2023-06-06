@@ -1,33 +1,24 @@
 <?php
-// Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-    // Include config file
     require_once "config.php";
     
-    // Prepare a select statement
     $sql = "SELECT * FROM produto WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "i", $param_id);
         
-        // Set parameters
         $param_id = trim($_GET["id"]);
         
-        // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
     
             if(mysqli_num_rows($result) == 1){
-                /* Fetch result row as an associative array. Since the result set contains only one row, we don't need to use while loop */
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
-                // Retrieve individual field value
                 $nome = $row["nome"];
                 $descricao = $row["descricao"];
                 $preco = $row["preco"];
             } else{
-                // URL doesn't contain valid id parameter. Redirect to error page
                 header("location: error.php");
                 exit();
             }
@@ -37,13 +28,10 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         }
     }
      
-    // Close statement
     mysqli_stmt_close($stmt);
     
-    // Close connection
     mysqli_close($link);
 } else{
-    // URL doesn't contain id parameter. Redirect to error page
     header("location: error.php");
     exit();
 }
@@ -62,18 +50,18 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         }
         .page-header h1{
             margin-top: 0;
-            color: #5034C4; /* Cor base */
+            color: #5034C4;
         }
         .btn-primary {
-            background-color: #5034C4; /* Cor base */
-            border-color: #5034C4; /* Cor base */
+            background-color: #5034C4; 
+            border-color: #5034C4; 
         }
         .btn-primary:hover,
         .btn-primary:focus,
         .btn-primary:active,
         .btn-primary:active:hover {
-            background-color: #2C1D72; /* Cor mais escura */
-            border-color: #2C1D72; /* Cor mais escura */
+            background-color: #2C1D72;
+            border-color: #2C1D72; 
         }
     </style>
 </head>

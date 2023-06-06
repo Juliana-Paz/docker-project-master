@@ -1,17 +1,12 @@
 <?php
-// Include config file
 require_once "config.php";
  
-// Define variables and initialize with empty values
 $nome = $descricao = $preco = "";
 $nome_err = $descricao_err = $preco_err = "";
  
-// Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-    // Get hidden input value
     $id = $_POST["id"];
     
-    // Validate nome
     $input_nome = trim($_POST["nome"]);
     if(empty($input_nome)){
         $nome_err = "Please enter a nome.";
@@ -21,7 +16,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $nome = $input_nome;
     }
     
-    // Validate descricao descricao
     $input_descricao = trim($_POST["descricao"]);
     if(empty($input_descricao)){
         $descricao_err = "Please enter an descricao.";     
@@ -29,7 +23,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $descricao = $input_descricao;
     }
     
-    // Validate preco
     $input_preco = trim($_POST["preco"]);
     if(empty($input_preco)){
         $preco_err = "Please enter the preco amount.";     
@@ -38,25 +31,20 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     } else{
         $preco = $input_preco;
     }
-    
-    // Check input errors before inserting in database
+
     if(empty($nome_err) && empty($descricao_err) && empty($preco_err)){
         // Prepare an update statement
         $sql = "UPDATE produto SET nome=?, descricao=?, preco=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "sssi", $param_nome, $param_descricao, $param_preco, $param_id);
             
-            // Set parameters
             $param_nome = $nome;
             $param_descricao = $descricao;
             $param_preco = $preco;
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                // Records updated successfully. Redirect to landing page
                 header("location: index.php");
                 exit();
             } else{
@@ -64,41 +52,30 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
          
-        // Close statement
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
     mysqli_close($link);
 } else{
-    // Check existence of id parameter before processing further
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-        // Get URL parameter
         $id =  trim($_GET["id"]);
         
-        // Prepare a select statement
         $sql = "SELECT * FROM produto WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
             
-            // Set parameters
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 $result = mysqli_stmt_get_result($stmt);
     
                 if(mysqli_num_rows($result) == 1){
-                    /* Fetch result row as an associative array. Since the result set contains only one row, we don't need to use while loop */
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
-                    // Retrieve individual field value
                     $nome = $row["nome"];
                     $descricao = $row["descricao"];
                     $preco = $row["preco"];
                 } else{
-                    // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
                     exit();
                 }
@@ -108,13 +85,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
         
-        // Close statement
         mysqli_stmt_close($stmt);
         
-        // Close connection
         mysqli_close($link);
     }  else{
-        // URL doesn't contain id parameter. Redirect to error page
         header("location: error.php");
         exit();
     }
@@ -134,18 +108,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
         .page-header h2{
             margin-top: 0;
-            color: #5034C4; /* Cor base */
+            color: #5034C4; 
         }
         .btn-primary {
-            background-color: #5034C4; /* Cor base */
-            border-color: #5034C4; /* Cor base */
+            background-color: #5034C4; 
+            border-color: #5034C4; 
         }
         .btn-primary:hover,
         .btn-primary:focus,
         .btn-primary:active,
         .btn-primary:active:hover {
-            background-color: #2C1D72; /* Cor mais escura */
-            border-color: #2C1D72; /* Cor mais escura */
+            background-color: #2C1D72; 
+            border-color: #2C1D72;
         }
     </style>
 </head>
