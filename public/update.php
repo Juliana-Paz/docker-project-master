@@ -129,9 +129,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Update Record</h2>
+                        <h2>Atualizar Produto</h2>
                     </div>
-                    <p>Please edit the input values and submit to update the record.</p>
+                    <p>Por favor, insira as novas informações do produto.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group <?php echo (!empty($nome_err)) ? 'has-error' : ''; ?>">
                             <label>Nome</label>
@@ -139,17 +139,17 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $nome_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($descricao_err)) ? 'has-error' : ''; ?>">
-                            <label>descricao</label>
+                            <label>Descrição</label>
                             <textarea name="descricao" class="form-control"><?php echo $descricao; ?></textarea>
                             <span class="help-block"><?php echo $descricao_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($preco_err)) ? 'has-error' : ''; ?>">
-                            <label>preco</label>
+                            <label>Preço</label>
                             <input type="text" name="preco" class="form-control" value="<?php echo $preco; ?>">
                             <span class="help-block"><?php echo $preco_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Enviar">
                         <a href="index.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>

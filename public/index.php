@@ -39,8 +39,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left text-success">Employees Details</h2>
-                        <a href="create.php" class="btn btn-success pull-right">Add New Employee</a>
+                        <h2 class="pull-left text-success">Produtos em Estoque</h2>
+                        <a href="create.php" class="btn btn-success pull-right">Adicionar Produto</a>
                     </div>
                     <?php
                     require_once "config.php";
@@ -52,10 +52,10 @@
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>#</th>";
-                                        echo "<th>Name</th>";
-                                        echo "<th>Address</th>";
-                                        echo "<th>Salary</th>";
-                                        echo "<th>Action</th>";
+                                        echo "<th>Nome</th>";
+                                        echo "<th>Descrição</th>";
+                                        echo "<th>Preço</th>";
+                                        echo "<th>Ações</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";

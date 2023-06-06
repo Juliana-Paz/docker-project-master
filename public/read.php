@@ -89,7 +89,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label>Preço</label>
                         <p class="form-control-static"><?php echo $row["preco"]; ?></p>
                     </div>
-                    <p><a href="index.php" class="btn btn-primary">voltar</a></p>
+                    <p><a href="index.php" class="btn btn-primary">Voltar</a></p>
                 </div>
             </div>        
         </div>

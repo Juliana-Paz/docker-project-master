@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Create Record</h2>
+                        <h2>Adicionar Produto</h2>
                     </div>
                     <p>Por favor, preencha o formulário com as informações do produto</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
