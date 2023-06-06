@@ -121,7 +121,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 }
 ?>
  
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -131,6 +131,21 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         .wrapper{
             width: 500px;
             margin: 0 auto;
+        }
+        .page-header h2{
+            margin-top: 0;
+            color: #5034C4; /* Cor base */
+        }
+        .btn-primary {
+            background-color: #5034C4; /* Cor base */
+            border-color: #5034C4; /* Cor base */
+        }
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-primary:active:hover {
+            background-color: #2C1D72; /* Cor mais escura */
+            border-color: #2C1D72; /* Cor mais escura */
         }
     </style>
 </head>
@@ -161,7 +176,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
+                        <a href="index.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        
@@ -169,3 +184,4 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     </div>
 </body>
 </html>
+

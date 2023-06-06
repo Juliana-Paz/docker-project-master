@@ -49,6 +49,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             width: 500px;
             margin: 0 auto;
         }
+        .page-header h1{
+            margin-top: 0;
+            color: #5034C4; /* Cor base */
+        }
     </style>
 </head>
 <body>
@@ -75,3 +79,4 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     </div>
 </body>
 </html>
+

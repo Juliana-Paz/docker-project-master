@@ -48,6 +48,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +59,21 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         .wrapper{
             width: 500px;
             margin: 0 auto;
+        }
+        .page-header h1{
+            margin-top: 0;
+            color: #5034C4; /* Cor base */
+        }
+        .btn-primary {
+            background-color: #5034C4; /* Cor base */
+            border-color: #5034C4; /* Cor base */
+        }
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-primary:active:hover {
+            background-color: #2C1D72; /* Cor mais escura */
+            border-color: #2C1D72; /* Cor mais escura */
         }
     </style>
 </head>

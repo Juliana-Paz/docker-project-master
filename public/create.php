@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
  
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -79,6 +79,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         .wrapper{
             width: 500px;
             margin: 0 auto;
+        }
+        .page-header h2{
+            margin-top: 0;
+            color: #5034C4; /* Cor base */
+        }
+        .btn-primary {
+            background-color: #5034C4; /* Cor base */
+            border-color: #5034C4; /* Cor base */
+        }
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-primary:active:hover {
+            background-color: #2C1D72; /* Cor mais escura */
+            border-color: #2C1D72; /* Cor mais escura */
         }
     </style>
 </head>
@@ -107,8 +122,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="text" name="preco" class="form-control" value="<?php echo $preco; ?>">
                             <span class="help-block"><?php echo $preco_err;?></span>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cacelar</a>
+                        <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
+                        <a href="index.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        
@@ -116,3 +131,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 </body>
 </html>
+

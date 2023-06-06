@@ -13,6 +13,15 @@
         }
         .page-header h2{
             margin-top: 0;
+            color: #5034C4; /* Cor do título */
+        }
+        .btn-success {
+            background-color: #5034C4; /* Cor do botão */
+            border-color: #5034C4; /* Cor do botão */
+        }
+        .btn-success:hover {
+            background-color: #2C1D72; /* Cor do botão em hover */
+            border-color: #2C1D72; /* Cor do botão em hover */
         }
         table tr td:last-child a{
             margin-right: 15px;
@@ -30,8 +39,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Produtos Em Estoque</h2>
-                        <a href="create.php" class="btn btn-success pull-right">Adicionar Produto</a>
+                        <h2 class="pull-left text-success">Employees Details</h2>
+                        <a href="create.php" class="btn btn-success pull-right">Add New Employee</a>
                     </div>
                     <?php
                     // Including the config file
@@ -45,10 +54,10 @@
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>#</th>";
-                                        echo "<th>Nome</th>";
-                                        echo "<th>Descriçao</th>";
-                                        echo "<th>Preço</th>";
-                                        echo "<th>Ação</th>";
+                                        echo "<th>Name</th>";
+                                        echo "<th>Address</th>";
+                                        echo "<th>Salary</th>";
+                                        echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -70,10 +79,10 @@
                             // Free result set
                             mysqli_free_result($result);
                         } else{
-                            echo "<p class='lead'><em>Nenhum produto em estoque.</em></p>";
+                            echo "<p class='lead'><em>No records were found.</em></p>";
                         }
                     } else{
-                        echo "ERRO: Não foi possível executar $sql. " . mysqli_error($link);
+                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
  
                     // Close connection
