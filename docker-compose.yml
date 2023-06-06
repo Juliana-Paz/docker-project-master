@@ -1,7 +1,9 @@
 version: "3"
 services:
   php:
-    build: './php/'
+    build:
+      context: ./php
+      dockerfile: Dockerfile
     volumes:
       - ./public:/var/www/html/
   apache:
@@ -13,6 +15,9 @@ services:
       - "8080:80"
     volumes:
       - ./public:/var/www/html/
+      - ./apache/apache_php.conf:/etc/apache2/sites-available/000-default.conf
+    links:
+      - php
   mysql:
     image: mysql:5.7
     restart: always
@@ -27,6 +32,4 @@ services:
       MYSQL_USER: "juliana"
       MYSQL_PASSWORD: "123"
 volumes:
-    db_data:
-
-
+  db_data:
